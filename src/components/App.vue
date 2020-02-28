@@ -3,6 +3,7 @@
         <AppTop />
         <AppHeader />
         <AppSlider />
+        <AppAbout />
     </div>
 </template>
 
@@ -10,12 +11,14 @@
 import AppTop from "./AppTop";
 import AppHeader from "./AppHeader";
 import AppSlider from "./AppSlider";
+import AppAbout from "./AppAbout";
 
 export default {
     components: {
         AppTop,
         AppHeader,
-        AppSlider
+        AppSlider,
+        AppAbout
     }
 };
 </script>
