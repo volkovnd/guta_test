@@ -1,7 +1,7 @@
 <template>
     <section id="about">
         <div class="title">
-            <h1>О компании</h1>
+            <a href="/">О компании</a>
         </div>
         <div class="content">
             <p>Что-то более продвинутое делается с помощью покадровой анимации — когда для разных состояний объекта (стоит, идет, в прыжке, атакует) создается несколько спрайтов (двумерное изображение), которые сменяют друг друга с определенным интервалом.</p>
@@ -38,12 +38,13 @@ export default {
     max-width: 770px;
 }
 
-h1 {
+.title a {
     font-size: 32px;
     line-height: 39px;
     font-weight: 700;
     color: #000000;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 p {
