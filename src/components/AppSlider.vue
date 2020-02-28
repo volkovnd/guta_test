@@ -1,10 +1,14 @@
 <template>
     <div id="slider">
         <div class="slides" v-bind:style="{transform: 'translateX(-' + (currentSlide * 100) + 'vw)'}">
-            <a class="slide" v-for="(slide, index) in slides" v-bind:link="slide.link">
-                <img v-bind:src="slide.image" alt=""/>
-                <h2>{{slide.title}}</h2>
-                <p>{{slide.description}}</p>
+            <a class="slide" v-for="(slide, index) in slides" v-bind:link="slide.link" v-bind:style="{backgroundImage: 'url('+slide.image+')'}">
+                <div class="slide-description-wrapper">
+                    <div class="slide-description">
+                        <small>{{slide.tag}}</small>
+                        <h2>{{slide.title}}</h2>
+                        <p>{{slide.description}}</p>
+                    </div>
+                </div>
             </a>
         </div>
         <div class="controls">
@@ -21,20 +25,23 @@ export default {
             slides: [
                 {
                     link: "/",
+                    tag: "Анимация",
                     image: "images/slide_1.jpg",
                     title: "Подготовка спрайтов для анимации в Unity",
                     description: "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
                 },
                 {
                     link: "/",
+                    tag: "Анимация",
                     image: "images/slide_2.jpg",
-                    title: "Подготовка спрайтов для анимации в Unity",
+                    title: "Подготовка спрайтов для анимации",
                     description: "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
                 },
                 {
                     link: "/",
+                    tag: "Анимация",
                     image: "images/slide_3.jpg",
-                    title: "Подготовка спрайтов для анимации в Unity",
+                    title: "Подготовка спрайтов",
                     description: "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
                 }
             ],
@@ -60,7 +67,7 @@ export default {
     },
     created() {
         setInterval(() => {
-            this.nextSlide();
+            // this.nextSlide();
         }, 3000);
     }
 };
@@ -94,12 +101,9 @@ export default {
     max-width: 100vw;
     position: relative;
     display: block;
-
-    img {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
+    height: 600px;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     h2 {
         display: block;
@@ -107,11 +111,10 @@ export default {
         font-weight: 600;
         line-height: 54px;
         text-transform: uppercase;
-        position: absolute;
-        top: calc(50% - 200px);
-        left: calc(50% - 570px);
-        max-width: 800px;
         color: white;
+        max-width: 800px;
+        margin-top: 30px;
+        margin-bottom: 20px;
     }
 
     p {
@@ -120,10 +123,35 @@ export default {
         line-height: 30px;
         color: #FFFFFF;
         max-width: 800px;
-        position: absolute;
-        top: calc(50%);
-        left: calc(50% - 570px);
     }
+
+    small {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 18px;
+        padding: 6px 14px;
+        color: white;
+        text-transform: uppercase;
+        background-color: #14A5DA;
+    }
+}
+
+.slide-description-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.56);
+    padding-bottom: 122px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+.slide-description {
+    @include make-container();
 }
 
 .slider-button {
