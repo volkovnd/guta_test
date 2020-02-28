@@ -4,6 +4,7 @@
         <AppHeader />
         <AppSlider />
         <AppAbout />
+        <AppNews />
     </div>
 </template>
 
@@ -12,13 +13,15 @@ import AppTop from "./AppTop";
 import AppHeader from "./AppHeader";
 import AppSlider from "./AppSlider";
 import AppAbout from "./AppAbout";
+import AppNews from "./AppNews";
 
 export default {
     components: {
         AppTop,
         AppHeader,
         AppSlider,
-        AppAbout
+        AppAbout,
+        AppNews
     }
 };
 </script>
