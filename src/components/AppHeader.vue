@@ -2,14 +2,7 @@
     <header>
         <div class="container">
             <AppLogo />
-            <nav id="menu">
-                <a href="/">Меню</a>
-                <a href="/">Меню</a>
-                <a href="/">Меню</a>
-                <a href="/">Меню</a>
-                <a href="/">Меню</a>
-                <a href="/">Меню</a>
-            </nav>
+            <AppHeaderNav />
             <div id="sub-menu">
                 <a href="/">Регистрация</a>
                 <a href="/">Вход</a>
@@ -20,12 +13,14 @@
 
 <script>
 import AppLogo from "./AppLogo";
+import AppHeaderNav from "./AppHeaderNav";
 
 export default {
     components: {
-        AppLogo
+        AppLogo,
+        AppHeaderNav
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -53,43 +48,6 @@ export default {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-    }
-
-    #menu {
-        flex: 0 0 650px;
-        width: 100%;
-        max-width: 650px;
-
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        a {
-            text-decoration: none;
-            color: $links-color;
-            position: relative;
-
-            &:after {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 100%;
-                content: "";
-                background-color: #000000;
-                height: 1px;
-                transition: all 0.2s ease;
-            }
-
-            &:hover {
-                font-weight: 600;
-
-                &:after {
-                    right: 0;
-                }
-            }
-        }
     }
 
     #sub-menu {
