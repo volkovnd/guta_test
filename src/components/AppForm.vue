@@ -1,27 +1,37 @@
 <template>
     <section id="form">
         <div class="form">
-            <form action="/">
+            <form action="/" @submit="checkForm">
                 <h2>Подпишитесь на рассылку</h2>
                 <div class="form-row">
-                    <div class="form-item">
+                    <div v-if="!errorName"  class="form-item">
                         <label for="form-name">
                             Имя
                         </label>
-                        <input type="text" placeholder="Ваше имя" name="name" id="form-name" />
+                        <input type="text" placeholder="Ваше имя" v-model="name" name="name" id="form-name"/>
                     </div>
-                    <div class="form-item">
+                    <div v-else class="form-item">
+                        <span class="form-error">{{ errorName }}</span>
+                        <input class="error" type="text" placeholder="Ваше имя" v-model="name" name="name" id="form-name"/>
+                    </div>
+                    <div v-if="!errorEmail" class="form-item">
                         <label for="form-email">
                             E-Mail
                         </label>
-                        <input type="text" placeholder="example@mail.com" name="name" id="form-email" />
+                        <input type="text" placeholder="example@mail.com" v-model="email" name="email" id="form-email" />
+                    </div>
+                    <div v-else class="form-item">
+                        <span class="form-error">{{ errorEmail }}</span>
+                        <input class="error" type="text" placeholder="example@mail.com" v-model="email" name="email" id="form-email" />
                     </div>
                 </div>
-                <div class="form-item">
-                    <label for="form-comment">
-                        Комментарий
-                    </label>
-                    <textarea id="form-comment" name="comment" placeholder="Комментарий" rows="5"></textarea>
+                <div v-if="!errorComment" class="form-item">
+                    <label for="form-comment">Комментарий</label>
+                    <textarea id="form-comment" v-model="comment" placeholder="Комментарий" rows="5"></textarea>
+                </div>
+                <div v-else class="form-item">
+                    <span class="form-error">{{ errorComment }}</span>
+                    <textarea class="error" id="form-comment" v-model="comment" placeholder="Комментарий" rows="5"></textarea>
                 </div>
                 <button type="submit">Подписаться</button>
             </form>
@@ -31,8 +41,55 @@
 
 <script>
 export default {
+    data() {
+        return {
+            name: null,
+            email: null,
+            comment: null,
+            errorName: false,
+            errorEmail: false,
+            errorComment: false
+        };
+    },
+    methods: {
+        checkForm(e) {
+            if (!this.name) {
+                this.errorName = "Заполните поле";
+            } else if (!this.validName(this.name)) {
+                this.errorName = "Цифры в имени не допустимы";
+            } else {
+                this.errorName = false;
+            }
 
-}
+            if (!this.email) {
+                this.errorEmail = "Заполните поле";
+            } else if (!this.validEmail(this.email)) {
+                this.errorEmail = "Вы ввели некорректный e-mail";
+            } else {
+                this.errorEmail = false;
+            }
+
+            if (!this.comment) {
+                this.errorComment = "Заполните поле";
+            } else {
+                this.errorComment = false;
+            }
+
+            e.preventDefault();
+        },
+        validEmail(email) {
+            /** Честно спер регулярное выражение :-) */
+            let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            return re.test(email);
+        },
+        validName(name) {
+            let re = /^[a-zA-Zа-яА-Я ]{1,}$/
+
+            return re.test(name);
+        }
+    }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -118,13 +175,17 @@ h2 {
     padding-right: 15px;
     margin-bottom: 25px;
 
-    label {
+    label, .form-error {
         display: block;
         padding-left: 21px;
         font-size: 12px;
         line-height: 15px;
         margin-bottom: 5px;
         text-align: left;
+    }
+
+    .form-error {
+        color: #E76400;
     }
 
     input, textarea {
@@ -134,6 +195,10 @@ h2 {
         line-height: 18px;
         padding: 10px 20px;
         color: #000000;
+
+        &.error {
+            border-color: #E76400;
+        }
 
         &:focus {
             background-color: #14A5DA1F;
