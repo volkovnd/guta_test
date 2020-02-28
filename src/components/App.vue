@@ -35,7 +35,10 @@ export default {
 <style>
     @import "~normalize.css/normalize.css";
 
-    body {
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
         font-family: Montserrat, sans-serif;
         font-weight: 400;
     }
