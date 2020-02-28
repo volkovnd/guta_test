@@ -6,13 +6,14 @@
 </template>
 
 <script>
-import AppTop from "./AppTop.vue";
-import AppHeader from "./AppHeader.vue";
+import AppTop from "./AppTop";
+import AppHeader from "./AppHeader";
 
 export default {
     components: {
         AppTop,
-        AppHeader
+        AppHeader,
+        AppSlider
     }
 };
 </script>

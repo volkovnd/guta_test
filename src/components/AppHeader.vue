@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "../scss/global";
+    @import "scss/global";
 
     header {
         @include make-container();
