@@ -71,7 +71,14 @@ var commonConfig = () => ({
             minify: false,
             template: path.resolve(__dirname, "src/pages/home.html")
         })
-    ]
+    ],
+    resolve: {
+        alias: {
+            images: path.resolve(__dirname, "src/images"),
+            scss: path.resolve(__dirname, "src/scss")
+        },
+        extensions: [".js", ".vue"]
+    }
 });
 
 module.exports = commonConfig;
