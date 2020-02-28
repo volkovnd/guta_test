@@ -2,6 +2,7 @@ var path = require("path");
 
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var VueLoaderPlugin = require("vue-loader").VueLoaderPlugin;
+var CopyWebpackPlugin = require("copy-webpack-plugin");
 
 /** @returns {import('webpack').Configuration} */
 var commonConfig = () => ({
@@ -65,6 +66,12 @@ var commonConfig = () => ({
         }
     },
     plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: "src/images",
+                to: "images"
+            }
+        ]),
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             title: "Home page",
