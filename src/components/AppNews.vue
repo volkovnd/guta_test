@@ -2,7 +2,10 @@
     <section id="news">
         <div class="list">
             <div class="news-item" v-for="(article, index) in showingNews">
-                <img v-bind:src="article.image" alt="">
+                <img v-bind:src="article.image" alt=""/>
+                <div class="news-item-upped">
+                    <span class="news-item-number">{{index+1}}</span>
+                </div>
             </div>
         </div>
         <div class="load-more-wrapper" v-if="allNewsShown === false">
@@ -112,6 +115,24 @@ img {
     display: block;
     width: 100%;
     height: auto;
+}
+
+.news-item-upped {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.46);
+}
+
+.news-item-number {
+    font: Bold 161px/196px Montserrat;
+    color: rgba(247, 247, 247, 0.6);
+
 }
 
 .load-more {
