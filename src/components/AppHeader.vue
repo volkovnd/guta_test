@@ -1,8 +1,6 @@
 <template>
     <header>
-        <div id="logo">
-            <a href="/">LOGOTYPE</a>
-        </div>
+        <AppLogo />
         <nav id="menu">
             <a href="/">Меню</a>
             <a href="/">Меню</a>
@@ -19,9 +17,11 @@
 </template>
 
 <script>
+import AppLogo from "./AppLogo";
+
 export default {
     components: {
-
+        AppLogo
     }
 }
 </script>
@@ -40,22 +40,6 @@ export default {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-    }
-
-    #logo {
-        flex-basis: 0;
-        flex-grow: 1;
-        max-width: 100%;
-
-        a {
-            font-size: 20px;
-            line-height: 24px;
-            font-weight: 700;
-            text-decoration: none;
-            color: $links-color;
-
-            display: block;
-        }
     }
 
     #menu {
