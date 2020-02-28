@@ -1,11 +1,11 @@
 <template>
     <div id="slider">
         <div class="slides" v-bind:style="{transform: 'translateX(-' + (currentSlide * 100) + 'vw)'}">
-            <div class="slide" v-for="(slide, index) in slides">
+            <a class="slide" v-for="(slide, index) in slides" v-bind:link="slide.link">
                 <img v-bind:src="slide.image" alt=""/>
                 <h2>{{slide.title}}</h2>
                 <p>{{slide.description}}</p>
-            </div>
+            </a>
         </div>
         <div class="controls">
             <button type="button" @click="nextSlide" class="slider-button next-slide"></button>
@@ -20,16 +20,19 @@ export default {
         return {
             slides: [
                 {
+                    link: "/",
                     image: "images/slide_1.jpg",
                     title: "Подготовка спрайтов для анимации в Unity",
                     description: "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
                 },
                 {
+                    link: "/",
                     image: "images/slide_2.jpg",
                     title: "Подготовка спрайтов для анимации в Unity",
                     description: "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
                 },
                 {
+                    link: "/",
                     image: "images/slide_3.jpg",
                     title: "Подготовка спрайтов для анимации в Unity",
                     description: "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
@@ -90,6 +93,7 @@ export default {
     flex: 0 0 100vw;
     max-width: 100vw;
     position: relative;
+    display: block;
 
     img {
         display: block;
