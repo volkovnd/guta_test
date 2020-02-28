@@ -5,6 +5,7 @@
         <AppSlider />
         <AppAbout />
         <AppNews />
+        <AppForm />
     </div>
 </template>
 
@@ -14,6 +15,7 @@ import AppHeader from "./AppHeader";
 import AppSlider from "./AppSlider";
 import AppAbout from "./AppAbout";
 import AppNews from "./AppNews";
+import AppForm from "./AppForm";
 
 export default {
     components: {
@@ -21,7 +23,8 @@ export default {
         AppHeader,
         AppSlider,
         AppAbout,
-        AppNews
+        AppNews,
+        AppForm
     }
 };
 </script>
