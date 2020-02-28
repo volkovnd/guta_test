@@ -1,5 +1,9 @@
 <template>
     <section id="news">
+        <div class="title">
+            <a class="h1" href="/">Новости</a>
+            <a class="read-all" href="/">Все новости</a>
+        </div>
         <div class="list">
             <div class="news-item" v-for="(article, index) in showingNews">
                 <img v-bind:src="article.image" alt=""/>
@@ -81,6 +85,31 @@ export default {
 #news {
     @include make-container();
     margin-bottom: 70px;
+}
+
+.title {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+
+    .h1 {
+        font-size: 32px;
+        line-height: 39px;
+        font-weight: 700;
+        color: #000000;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .read-all {
+        font-size: 16px;
+        line-height: 1;
+        color: #000000;
+        text-decoration: none;
+    }
 }
 
 .list {
