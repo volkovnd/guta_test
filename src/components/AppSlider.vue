@@ -54,6 +54,11 @@ export default {
         slidesCount() {
             return this.slides.length;
         }
+    },
+    created() {
+        setInterval(() => {
+            this.nextSlide();
+        }, 3000);
     }
 };
 </script>
