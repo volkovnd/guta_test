@@ -1,17 +1,33 @@
 <template>
     <div id="app">
-        <h1>Hello World</h1>
+        <AppTop />
+        <AppHeader />
     </div>
 </template>
 
 <script>
-export default {};
+import AppTop from "./AppTop.vue";
+import AppHeader from "./AppHeader.vue";
+
+export default {
+    components: {
+        AppTop,
+        AppHeader
+    }
+};
 </script>
 
-<style lang="scss">
-    @import "../scss/global";
+<style>
+    @import "~normalize.css/normalize.css";
 
-    h1 {
-        color: $primary;
+    body {
+        font-family: Montserrat, sans-serif;
+        font-weight: 400;
     }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
 </style>
