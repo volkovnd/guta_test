@@ -5,7 +5,7 @@
                 <img v-bind:src="article.image" alt="">
             </div>
         </div>
-        <div class="load-more-wrapper">
+        <div class="load-more-wrapper" v-if="allNewsShown === false">
             <button type="button" class="load-more" @click="loadMore">Показать еще</button>
         </div>
     </section>
@@ -59,6 +59,9 @@ export default {
             }
 
             return this.news.slice(0, newsCount);
+        },
+        allNewsShown() {
+            return this.newsCount <= this.page * 3;
         }
     },
     methods: {
