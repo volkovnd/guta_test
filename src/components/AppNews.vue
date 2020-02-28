@@ -5,12 +5,12 @@
             <a class="read-all" href="/">Все новости</a>
         </div>
         <div class="list">
-            <div class="news-item" v-for="(article, index) in showingNews">
+            <a class="news-item" v-for="(article, index) in showingNews" v-bind:href="article.link">
                 <img v-bind:src="article.image" alt=""/>
                 <div class="news-item-upped">
                     <span class="news-item-number">{{index+1}}</span>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="load-more-wrapper" v-if="allNewsShown === false">
             <button type="button" class="load-more" @click="loadMore">Показать еще</button>
@@ -24,31 +24,40 @@ export default {
         return {
             news: [
                 {
-                    image: "images/img_1.jpg"
+                    image: "images/img_1.jpg",
+                    link: "/"
                 },
                 {
-                    image: "images/img_2.jpg"
+                    image: "images/img_2.jpg",
+                    link: "/"
                 },
                 {
-                    image: "images/img_3.jpg"
+                    image: "images/img_3.jpg",
+                    link: "/"
                 },
                 {
-                    image: "images/img_3.jpg"
+                    image: "images/img_3.jpg",
+                    link: "/"
                 },
                 {
-                    image: "images/img_2.jpg"
+                    image: "images/img_2.jpg",
+                    link: "/"
                 },
                 {
-                    image: "images/img_1.jpg"
+                    image: "images/img_1.jpg",
+                    link: "/"
                 },
                 {
-                    image: "images/img_2.jpg"
+                    image: "images/img_2.jpg",
+                    link: "/"
                 },
                 {
-                    image: "images/img_3.jpg"
+                    image: "images/img_3.jpg",
+                    link: "/"
                 },
                 {
-                    image: "images/img_1.jpg"
+                    image: "images/img_1.jpg",
+                    link: "/"
                 }
             ],
             page: 1
