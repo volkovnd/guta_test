@@ -1,17 +1,19 @@
 <template>
     <header>
-        <AppLogo />
-        <nav id="menu">
-            <a href="/">Меню</a>
-            <a href="/">Меню</a>
-            <a href="/">Меню</a>
-            <a href="/">Меню</a>
-            <a href="/">Меню</a>
-            <a href="/">Меню</a>
-        </nav>
-        <div id="sub-menu">
-            <a href="/">Регистрация</a>
-            <a href="/">Вход</a>
+        <div class="container">
+            <AppLogo />
+            <nav id="menu">
+                <a href="/">Меню</a>
+                <a href="/">Меню</a>
+                <a href="/">Меню</a>
+                <a href="/">Меню</a>
+                <a href="/">Меню</a>
+                <a href="/">Меню</a>
+            </nav>
+            <div id="sub-menu">
+                <a href="/">Регистрация</a>
+                <a href="/">Вход</a>
+            </div>
         </div>
     </header>
 </template>
@@ -30,10 +32,21 @@ export default {
     @import "scss/global";
 
     header {
-        @include make-container();
+        position: fixed;
+        top: 40px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+
+        background-color: white;
 
         padding-top: 46px;
         padding-bottom: 30px;
+        box-shadow: 0px 3px 6px #00000029;
+    }
+
+    .container {
+        @include make-container();
 
         display: flex;
         flex-wrap: wrap;
@@ -43,21 +56,39 @@ export default {
     }
 
     #menu {
-        flex: 0 0 auto;
-        width: auto;
-        max-width: 100%;
+        flex: 0 0 650px;
+        width: 100%;
+        max-width: 650px;
 
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
 
         a {
             text-decoration: none;
             color: $links-color;
-            padding-left: 30px;
-            padding-right: 30px;
+            position: relative;
+
+            &:after {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 100%;
+                content: "";
+                background-color: #000000;
+                height: 1px;
+                transition: all 0.2s ease;
+            }
+
+            &:hover {
+                font-weight: 600;
+
+                &:after {
+                    right: 0;
+                }
+            }
         }
     }
 
