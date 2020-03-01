@@ -35,8 +35,6 @@ export default {
 
         background-color: white;
 
-        padding-top: 46px;
-        padding-bottom: 30px;
         box-shadow: 0px 3px 6px #00000029;
     }
 
@@ -48,6 +46,8 @@ export default {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
+        height: 100px;
     }
 
     #sub-menu {

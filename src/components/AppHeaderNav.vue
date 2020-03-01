@@ -1,16 +1,18 @@
 <template>
-    <nav id="menu">
-        <div class="nav-item" v-for="item in navItems" >
-            <a v-bind:href="item.link">{{ item.title }}</a>
-            <!-- <div class="nav-dropdown" v-if="typeof item.childrens !== 'undefined' && item.childrens.length > 0">
-                <div class="container">
-                    <div class="nav-dropdown-menu">
-                        <a v-for="dropdownItem in item.childrens" v-bind:href="dropdownItem.link">{{dropdownItem.title}}</a>
-                    </div>
+    <div id="menu" @mouseover="showDropdown=true" @mouseleave="showDropdown=false">
+        <nav>
+            <div class="nav-item" v-for="item in navItems">
+                <a v-bind:href="item.link">{{ item.title }}</a>
+            </div>
+        </nav>
+        <div id="dropdown" v-show="showDropdown===true">
+            <div class="dropdown-container">
+                <div class="dropdown-item" v-for="item in navItems">
+                    <a v-for="dropdownItem in item.childrens" v-bind:href="dropdownItem.link">{{dropdownItem.title}}</a>
                 </div>
-            </div> -->
+            </div>
         </div>
-    </nav>
+    </div>
 </template>
 
 <script>
@@ -54,13 +56,32 @@ export default {
                 },
                 {
                     title: "Меню",
-                    link: "/"
+                    link: "/",
+                    childrens: [
+                        {
+                            title: "Меню",
+                            link: "/"
+                        },
+                        {
+                            title: "Меню",
+                            link: "/"
+                        },
+                        {
+                            title: "Меню",
+                            link: "/"
+                        },
+                        {
+                            title: "Меню",
+                            link: "/"
+                        }
+                    ]
                 },
                 {
                     title: "Меню",
                     link: "/"
                 }
-            ]
+            ],
+            showDropdown: false
         };
     }
 };
@@ -69,16 +90,33 @@ export default {
 <style lang="scss" scoped>
 @import "scss/global";
 
+.container {
+    @include make-container();
+}
+
 #menu {
     flex: 0 0 650px;
     width: 100%;
     max-width: 650px;
+}
 
+
+nav {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    .nav-item {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
+        flex-basis: 0;
+        flex-grow: 1;
+        height: 100px;
+    }
 
     a {
         text-decoration: none;
@@ -118,13 +156,59 @@ export default {
         background-color: white;
     }
 
-    .container {
-        @include make-container();
-    }
 
     .nav-item:hover {
         & > .nav-dropdown {
             display: block;
+        }
+    }
+}
+
+#dropdown {
+    position: fixed;
+    top: 140px;
+    left: 0;
+    right: 0;
+    background: white;
+
+    &:after {
+        position: absolute;
+        left: calc(50% - (1170px / 2));
+        top: 0;
+        width: 1170px;
+        height: 1px;
+        background-color: #CECECE;
+        content: "";
+    }
+}
+
+.dropdown-container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.dropdown-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    display: block;
+
+    a {
+        display: block;
+        font-size: 14px;
+        line-height: 18px;
+        color: $links-color;
+        text-decoration: none;
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 }
