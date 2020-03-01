@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { validEmail } from "./utils";
+
 export default {
     data() {
         return {
@@ -77,14 +79,9 @@ export default {
 
             e.preventDefault();
         },
-        validEmail(email) {
-            /** Честно спер регулярное выражение :-) */
-            let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-            return re.test(email);
-        },
+        validEmail,
         validName(name) {
-            let re = /^[a-zA-Zа-яА-Я ]{1,}$/
+            let re = /^[a-zA-Zа-яА-Я ]{1,}$/;
 
             return re.test(name);
         }
