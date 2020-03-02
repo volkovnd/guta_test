@@ -1,7 +1,7 @@
 <template>
     <div id="slider">
         <div class="slides" v-bind:style="{transform: 'translateX(-' + (currentSlide * 100) + 'vw)'}">
-            <a class="slide" v-for="(slide, index) in slides" v-bind:link="slide.link" v-bind:style="{backgroundImage: 'url('+slide.image+')'}">
+            <a class="slide" v-for="(slide, index) in slides" v-bind:key="index" v-bind:link="slide.link" v-bind:style="{backgroundImage: 'url('+slide.image+')'}">
                 <div class="slide-description-wrapper">
                     <div class="slide-description">
                         <small>{{slide.tag}}</small>
@@ -16,7 +16,7 @@
             <button type="button" @click="prevSlide" class="slider-button prev-slide"></button>
         </div>
         <div class="crumbs">
-            <button v-for="(slide, index) in slides" type="button" @click="selectSlide(index)" v-bind:class="currentSlide===index?'active':''"></button>
+            <button v-for="(slide, index) in slides" v-bind:key="index" type="button" @click="selectSlide(index)" v-bind:class="currentSlide===index?'active':''"></button>
         </div>
     </div>
 </template>
@@ -51,6 +51,16 @@ export default {
             currentSlide: 0
         };
     },
+    computed: {
+        slidesCount() {
+            return this.slides.length;
+        }
+    },
+    created() {
+        setInterval(() => {
+            this.nextSlide();
+        }, 3000);
+    },
     methods: {
         nextSlide() {
             this.currentSlide = (this.currentSlide + 1) % this.slidesCount;
@@ -65,16 +75,6 @@ export default {
         selectSlide(slidePos) {
             this.currentSlide = slidePos;
         }
-    },
-    computed: {
-        slidesCount() {
-            return this.slides.length;
-        }
-    },
-    created() {
-        setInterval(() => {
-            this.nextSlide();
-        }, 3000);
     }
 };
 </script>

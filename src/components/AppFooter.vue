@@ -14,5 +14,5 @@ export default {
         AppFooterTop,
         AppFooterBottom
     }
-}
+};
 </script>

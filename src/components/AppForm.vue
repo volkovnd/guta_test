@@ -4,11 +4,17 @@
             <form v-if="!formChecked" action="/" @submit="checkForm">
                 <h2>Подпишитесь на рассылку</h2>
                 <div class="form-row">
-                    <div v-if="!errorName"  class="form-item">
+                    <div v-if="!errorName" class="form-item">
                         <label for="form-name">
                             Имя
                         </label>
-                        <input type="text" placeholder="Ваше имя" v-model="name" name="name" id="form-name"/>
+                        <input
+                            type="text"
+                            placeholder="Ваше имя"
+                            v-model="name"
+                            name="name"
+                            id="form-name"
+                        />
                     </div>
                     <div v-else class="form-item">
                         <span class="form-error">{{ errorName }}</span>
@@ -106,7 +112,7 @@ export default {
 }
 
 .form {
-    border: 1px solid #14A5DA;
+    border: 1px solid #14a5da;
     padding: 40px;
     display: flex;
     flex-wrap: wrap;
@@ -121,7 +127,7 @@ export default {
         transform-origin: center;
         display: block;
         content: "";
-        background: #14A5DA1F 0% 0% no-repeat padding-box;
+        background: #14a5da1f 0% 0% no-repeat padding-box;
 
         width: calc(48px * 2);
         height: calc(48px * 2);
@@ -129,7 +135,7 @@ export default {
         top: -48px;
         left: -48px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             width: calc(78px * 2);
             height: calc(78px * 2);
 
@@ -153,7 +159,7 @@ export default {
         width: 30px;
         height: 30px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             background-size: 21px 21px;
 
             width: 50px;
@@ -170,7 +176,7 @@ form {
     max-width: 100%;
     flex: 0 0 100%;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         max-width: 600px;
         flex: 0 0 600px;
     }
@@ -184,7 +190,7 @@ h2 {
     font-size: 12px;
     line-height: 15px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         font-size: 20px;
         line-height: 24px;
     }
@@ -204,7 +210,7 @@ h2 {
         max-width: 100%;
         flex: 0 0 100%;
 
-        @media(min-width: 767px){
+        @media (min-width: 767px) {
             max-width: 50%;
             flex: 0 0 50%;
         }
@@ -217,14 +223,15 @@ h2 {
 
     margin-bottom: 15px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         padding-left: 15px;
         padding-right: 15px;
 
         margin-bottom: 25px;
     }
 
-    label, .form-error {
+    label,
+    .form-error {
         display: block;
         padding-left: 21px;
         margin-bottom: 5px;
@@ -233,19 +240,19 @@ h2 {
         font-size: 8px;
         line-height: 10px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             font-size: 12px;
             line-height: 15px;
         }
     }
 
     .form-error {
-        color: #E76400;
+        color: #e76400;
     }
 
     input, textarea {
         width: 100%;
-        border: 1px solid #14A5DA;
+        border: 1px solid #14a5da;
         border-radius: 4px;
         padding: 10px 20px;
         color: #000000;
@@ -253,26 +260,26 @@ h2 {
         font-size: 10px;
         line-height: 13px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             font-size: 14px;
             line-height: 18px;
         }
 
         &.error {
-            border-color: #E76400;
+            border-color: #e76400;
         }
 
         &:focus {
-            background-color: #14A5DA1F;
+            background-color: #14a5da1f;
         }
 
         &::placeholder {
-            color: rgba(0,0,0,0.73);
+            color: rgba(0, 0, 0, 0.73);
 
             font-size: 10px;
             line-height: 12 px;
 
-            @media(min-width: 767px) {
+            @media (min-width: 767px) {
                 font-size: 14px;
                 line-height: 18px;
             }
@@ -285,13 +292,13 @@ button[type="submit"] {
     border: none;
     font-size: 14px;
     line-height: 20px;
-    color: #FFFFFF;
+    color: #ffffff;
     padding: 10px 78px;
-    background-color: #14A5DA;
+    background-color: #14a5da;
 
     width: 100%;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         width: auto;
     }
 }
@@ -304,7 +311,7 @@ button[type="submit"] {
     display: block;
     text-align: center;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         font-size: 20px;
         line-height: 24px;
     }
@@ -321,7 +328,7 @@ button[type="submit"] {
 
     height: 40px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         background-size: 61px;
         height: 61px;
     }

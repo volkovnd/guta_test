@@ -5,7 +5,7 @@
             <a class="read-all" href="/">Все новости</a>
         </div>
         <div class="list">
-            <a class="news-item" v-for="(article, index) in showingNews" v-bind:href="article.link">
+            <a class="news-item" v-for="(article, index) in showingNews" v-bind:key="index" v-bind:href="article.link">
                 <img v-bind:src="article.image" alt=""/>
                 <div class="news-item-upped">
                     <span class="news-item-number">{{index+1}}</span>

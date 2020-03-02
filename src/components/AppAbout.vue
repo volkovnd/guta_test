@@ -11,9 +11,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -25,7 +23,7 @@ export default {
     padding-top: 20px;
     padding-bottom: 30px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         padding-top: 70px;
         padding-bottom: 70px;
 
@@ -38,7 +36,7 @@ export default {
 }
 
 .content {
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         width: 100%;
         flex: 0 0 770px;
         max-width: 770px;
@@ -48,7 +46,7 @@ export default {
 .title {
     text-align: center;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         text-align: left;
     }
 
@@ -61,7 +59,7 @@ export default {
         font-size: 16px;
         line-height: 19px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             font-size: 32px;
             line-height: 39px;
         }
@@ -75,7 +73,7 @@ p {
     line-height: 13px;
     margin-bottom: 20px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         font-size: 16px;
         line-height: 26px;
         margin-bottom: 50px;
@@ -94,7 +92,7 @@ p {
 
     text-align: center;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         font-size: 14px;
         line-height: 18px;
 
@@ -110,7 +108,7 @@ p {
         margin-left: 16px;
         margin-bottom: -2px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             margin-bottom: 0;
         }
     }

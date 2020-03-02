@@ -1,14 +1,14 @@
 <template>
     <div id="menu" @mouseover="showDropdown=true && !isMobile()" @mouseleave="showDropdown=false">
         <nav>
-            <div class="nav-item" v-for="item in navItems">
+            <div class="nav-item" v-for="(item, index) in navItems" v-bind:key="index">
                 <a v-bind:href="item.link">{{ item.title }}</a>
             </div>
         </nav>
-        <div id="dropdown" v-show="showDropdown===true">
+        <div id="dropdown" v-show="showDropdown === true">
             <div class="dropdown-container">
-                <div class="dropdown-item" v-for="item in navItems">
-                    <a v-for="dropdownItem in item.childrens" v-bind:href="dropdownItem.link">{{dropdownItem.title}}</a>
+                <div class="dropdown-item" v-for="(item, index) in navItems" v-bind:key="index">
+                    <a v-for="(dropdownItem, dropdownIndex) in item.childrens" v-bind:key="dropdownIndex" v-bind:href="dropdownItem.link">{{dropdownItem.title}}</a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@
                 © ООО «Глобус», 2016 — 2019
             </div>
             <div class="nav">
-                <a v-for="item in navItems" v-bind:href="item.link">{{item.title}}</a>
+                <a v-for="(item, index) in navItems" v-bind:key="index" v-bind:href="item.link">{{item.title}}</a>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@ export default {
 #footer-bottom {
     padding-top: 22px;
     padding-bottom: 23px;
-    background-color: #001F2B;
+    background-color: #001f2b;
 }
 
 .container {
@@ -52,11 +52,11 @@ export default {
 .copyright {
     font-size: 12px;
     line-height: 15px;
-    color: #DCE5E9;
+    color: #dce5e9;
 
     display: none;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         display: block;
     }
 }
@@ -65,7 +65,7 @@ export default {
     a {
         font-size: 12px;
         line-height: 15px;
-        color: #DCE5E9;
+        color: #dce5e9;
         text-decoration: none;
 
         & + a {

@@ -13,13 +13,13 @@
                 </div>
                 <div class="footer-top-right">
                     <div class="footer-top-nav">
-                        <a v-for="item in navItems" v-bind:href="item.link">{{item.title}}</a>
+                        <a v-for="(item, index) in navItems" v-bind:key="index" v-bind:href="item.link">{{item.title}}</a>
                     </div>
                     <div class="footer-top-row">
                         <div class="footer-soc-links">
                             <div class="footer-title">Мы в соц. сетях</div>
                             <div class="footer-soc-links-nav">
-                                <a v-for="item in socLinks" v-bind:href="item.link" v-bind:class="item.class"></a>
+                                <a v-for="(item, index) in socLinks" v-bind:key="index" v-bind:href="item.link" v-bind:class="item.class"></a>
                             </div>
                         </div>
                         <AppFooterTopForm />
@@ -87,7 +87,7 @@ export default {
             ]
         };
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -96,7 +96,7 @@ export default {
 .footer-top {
     padding: 30px 0;
 
-    background-color: #DCE5E9;
+    background-color: #dce5e9;
 }
 
 .footer-container {
@@ -104,7 +104,7 @@ export default {
 
     text-align: center;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         text-align: left;
     }
 }
@@ -123,7 +123,7 @@ export default {
     flex: 0 0 100%;
     max-width: 100%;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         flex: 0 0 215px;
         max-width: 215px;
     }
@@ -135,7 +135,7 @@ export default {
     flex: 0 0 100%;
     max-width: 100%;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         flex: 0 0 800px;
         max-width: 800px;
     }
@@ -147,7 +147,7 @@ export default {
 
     margin-bottom: 20px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         margin-bottom: 60px;
     }
 }
@@ -159,7 +159,7 @@ export default {
 
     margin-bottom: 26px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         margin-bottom: 0;
     }
 }
@@ -167,7 +167,7 @@ export default {
 .footer-top-nav {
     margin-bottom: 50px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -183,7 +183,7 @@ export default {
 
         margin-bottom: 8px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             margin-bottom: 0;
         }
     }
@@ -196,7 +196,7 @@ export default {
 
     margin-bottom: 20px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         margin-bottom: 10px;
     }
 }
@@ -206,7 +206,7 @@ export default {
     margin-right: auto;
     margin-bottom: 30px;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         margin-left: 0;
         margin-right: 0;
         margin-bottom: 0;
@@ -220,7 +220,7 @@ export default {
     align-items: center;
     justify-content: center;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         justify-content: flex-start;
     }
 
@@ -239,7 +239,7 @@ export default {
         width: 11px;
         height: 24px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             width: 7px;
             height: 14px;
         }
@@ -251,7 +251,7 @@ export default {
         width: 18px;
         height: 26px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             width: 11px;
             height: 16px;
         }
@@ -263,7 +263,7 @@ export default {
         width: 25px;
         height: 25px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             width: 15px;
             height: 15px;
         }

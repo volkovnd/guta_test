@@ -38,7 +38,7 @@ export default {
         },
         validEmail
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -47,7 +47,7 @@ export default {
     max-width: 100%;
     flex: 0 0 100%;
 
-    @media(min-width: 767px) {
+    @media (min-width: 767px) {
         max-width: calc(289px + 30px);
         flex: 0 0 calc(289px + 30px);
     }
@@ -57,10 +57,9 @@ export default {
         flex-wrap: wrap;
         flex-direction: row;
 
-
         input[type="text"] {
             border-radius: 2px;
-            background-color: #F7F7F7;
+            background-color: #f7f7f7;
             font-size: 12px;
             line-height: 16px;
             border: none;
@@ -74,13 +73,13 @@ export default {
             &::placeholder {
                 font-size: 12px;
                 line-height: 15px;
-                color: #BBBBBB;
+                color: #bbbbbb;
             }
         }
 
         button[type="submit"] {
             border-radius: 2px;
-            background-color: #14A5DA;
+            background-color: #14a5da;
             padding: 6px 25px;
             font-size: 14px;
             line-height: 18px;
