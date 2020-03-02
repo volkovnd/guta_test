@@ -53,6 +53,12 @@ export default {
     font-size: 12px;
     line-height: 15px;
     color: #DCE5E9;
+
+    display: none;
+
+    @media(min-width: 767px) {
+        display: block;
+    }
 }
 
 .nav {

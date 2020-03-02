@@ -44,8 +44,13 @@ export default {
 <style lang="scss" scoped>
 .footer-subscribe {
     width: 100%;
-    max-width: calc(289px + 30px);
-    flex: 0 0 calc(289px + 30px);
+    max-width: 100%;
+    flex: 0 0 100%;
+
+    @media(min-width: 767px) {
+        max-width: calc(289px + 30px);
+        flex: 0 0 calc(289px + 30px);
+    }
 
     form {
         display: flex;
