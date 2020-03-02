@@ -170,6 +170,7 @@ nav {
     left: 0;
     right: 0;
     background: white;
+    box-shadow: 0px 3px 6px #00000029;
 
     &:after {
         position: absolute;
