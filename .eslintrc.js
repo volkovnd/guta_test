@@ -29,5 +29,12 @@ module.exports = {
         files: ["src/**/*"],rules: {
             "no-restricted-globals": ["error"].concat(restrictedGlobals)
         }
-    }]
+    }],
+    settings: {
+        "import/resolver": {
+            webpack: {
+                config: "webpack.dev.js"
+            }
+        }
+    }
 };
