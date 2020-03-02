@@ -16,7 +16,7 @@ import { validEmail } from "./utils";
 export default {
     data() {
         return {
-            email,
+            email: null,
             emailError: false
         };
     },
