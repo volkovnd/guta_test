@@ -105,12 +105,26 @@ export default {
     margin-bottom: 30px;
 
     .h1 {
-        font-size: 32px;
-        line-height: 39px;
         font-weight: 700;
         color: #000000;
         text-transform: uppercase;
         text-decoration: none;
+
+        font-size: 16px;
+        line-height: 19px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        @media(min-width: 767px) {
+            font-size: 32px;
+            line-height: 39px;
+
+            text-align: left;
+
+            margin-left: 0;
+            margin-right: auto;
+        }
     }
 
     .read-all {
@@ -118,6 +132,12 @@ export default {
         line-height: 1;
         color: #000000;
         text-decoration: none;
+
+        display: none;
+
+        @media(min-width: 767px) {
+            display: block;
+        }
     }
 }
 
@@ -132,10 +152,6 @@ export default {
 .news-item {
     position: relative;
     width: 100%;
-    flex: 0 0 calc(50% - 15px);
-    max-width: calc(50% - 15px);
-    margin-bottom: 30px;
-    height: 300px;
     overflow: hidden;
     display: flex;
     flex-wrap: nowrap;
@@ -143,9 +159,27 @@ export default {
     justify-content: center;
     align-items: center;
 
+    height: auto;
+
+    flex: 0 0 100%;
+    max-width: 100%;
+
+    margin-bottom: 15px;
+
+    @media(min-width: 767px) {
+        height: 300px;
+
+        flex: 0 0 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+
+        margin-bottom: 30px;
+    }
+
     &:nth-of-type(3n + 3) {
-        flex: 0 0 100%;
-        max-width: 100%;
+        @media(min-width: 767px) {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
     }
 }
 
@@ -180,9 +214,15 @@ img {
     background-color: transparent;
     font-weight: 600;
     color: #000000;
-    font-size: 14px;
     text-transform: uppercase;
+
+    font-size: 10px;
+
+    @media(min-width: 767px) {
+        font-size: 14px;
+    }
 }
+
 .load-more-wrapper {
     text-align: center;
 }
