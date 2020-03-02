@@ -22,13 +22,7 @@
                                 <a v-for="item in socLinks" v-bind:href="item.link" v-bind:class="item.class"></a>
                             </div>
                         </div>
-                        <div class="footer-subscribe">
-                            <div class="footer-title">Подписка на новости</div>
-                            <form action="/">
-                                <input type="text" name="subscribe-email" placeholder="example@mail.com"/>
-                                <button type="submit">Ok</button>
-                            </form>
-                        </div>
+                        <AppFooterTopForm />
                     </div>
                 </div>
             </div>
@@ -38,10 +32,12 @@
 
 <script>
 import AppLogo from "./AppLogo";
+import AppFooterTopForm from "./AppFooterTopForm";
 
 export default {
     components: {
-        AppLogo
+        AppLogo,
+        AppFooterTopForm
     },
     data() {
         return {
@@ -194,53 +190,6 @@ export default {
         width: 15px;
         height: 15px;
         background-image: url("~images/instagram-logo.svg");
-    }
-}
-
-.footer-subscribe {
-    width: 100%;
-    max-width: calc(289px + 30px);
-    flex: 0 0 calc(289px + 30px);
-
-    form {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-
-
-        input[type="text"] {
-            border-radius: 2px;
-            background-color: #F7F7F7;
-            font-size: 12px;
-            line-height: 16px;
-            border: none;
-            padding: 7px 15px;
-            color: #000000;
-            flex-basis: 0;
-            flex-grow: 1;
-            max-width: 100%;
-            display: block;
-
-            &::placeholder {
-                font-size: 12px;
-                line-height: 15px;
-                color: #BBBBBB;
-            }
-        }
-
-        button[type="submit"] {
-            border-radius: 2px;
-            background-color: #14A5DA;
-            padding: 6px 25px;
-            font-size: 14px;
-            line-height: 18px;
-            border: none;
-            color: white;
-            flex: 0 0 auto;
-            width: auto;
-            margin-left: 11px;
-            display: block;
-        }
     }
 }
 </style>
