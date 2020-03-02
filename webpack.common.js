@@ -4,8 +4,6 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 var VueLoaderPlugin = require("vue-loader").VueLoaderPlugin;
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 
-var isDev = process.env.NODE_ENV && process.env.NODE_ENV === "development";
-
 /** @returns {import('webpack').Configuration} */
 var commonConfig = () => ({
     entry: {
@@ -78,7 +76,6 @@ var commonConfig = () => ({
         new HtmlWebpackPlugin({
             title: "Home page",
             minify: false,
-            base: isDev ? "/" : "https://volkovnd.github.io/guta_test/",
             template: path.resolve(__dirname, "src/pages/home.html")
         })
     ],
