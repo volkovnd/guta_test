@@ -28,14 +28,16 @@ export default {
 
     header {
         position: fixed;
-        top: 40px;
         left: 0;
         right: 0;
         z-index: 10;
-
         background-color: white;
+        top: 0;
 
-        box-shadow: 0px 3px 6px #00000029;
+        @media(min-width: 767px) {
+            top: 40px;
+            box-shadow: 0px 3px 6px #00000029;
+        }
     }
 
     .container {

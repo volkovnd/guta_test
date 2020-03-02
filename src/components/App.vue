@@ -50,6 +50,10 @@ export default {
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
 
     #app {
-        padding-top: 140px;
+        padding-top: 100px;
+
+        @media(min-width: 767px) {
+            padding-top: 140px;
+        }
     }
 </style>
