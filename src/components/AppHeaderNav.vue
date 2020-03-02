@@ -95,27 +95,39 @@ export default {
 }
 
 #menu {
-    flex: 0 0 650px;
     width: 100%;
-    max-width: 650px;
+
+    @media(min-width: 767px) {
+        max-width: 650px;
+        flex: 0 0 650px;
+    }
 }
 
 
 nav {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    .nav-item {
+    @media(min-width: 767px) {
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        flex-basis: 0;
-        flex-grow: 1;
-        height: 100px;
+    }
+
+    .nav-item {
+        margin-bottom: 25px;
+        text-align: center;
+
+        @media(min-width: 767px) {
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+            flex-basis: 0;
+            flex-grow: 1;
+            margin-bottom: 0;
+            height: 100px;
+        }
     }
 
     a {
@@ -155,7 +167,6 @@ nav {
 
         background-color: white;
     }
-
 
     .nav-item:hover {
         & > .nav-dropdown {
