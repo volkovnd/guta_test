@@ -73,7 +73,7 @@ export default {
     },
     created() {
         setInterval(() => {
-            this.nextSlide();
+            // this.nextSlide();
         }, 3000);
     }
 };
@@ -85,11 +85,15 @@ export default {
 #slider {
     overflow: hidden;
     position: relative;
-    height: 600px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: center;
+    height: 240px;
+
+    @media(min-width: 767px) {
+        height: 600px;
+    }
 }
 
 .slides {
@@ -107,38 +111,60 @@ export default {
     max-width: 100vw;
     position: relative;
     display: block;
-    height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 240px;
+
+    @media(min-width: 767px) {
+        height: 600px;
+    }
 
     h2 {
         display: block;
-        font-size: 46px;
+        font-size: 16px;
+        line-height: 20px;
         font-weight: 600;
-        line-height: 54px;
         text-transform: uppercase;
         color: white;
         max-width: 800px;
-        margin-top: 30px;
-        margin-bottom: 20px;
+        margin-top: 16px;
+        margin-bottom: 10px;
+
+        @media(min-width: 767px) {
+            margin-top: 30px;
+            margin-bottom: 20px;
+
+            font-size: 46px;
+            line-height: 54px;
+        }
     }
 
     p {
         display: block;
-        font-size: 24px;
-        line-height: 30px;
         color: #FFFFFF;
         max-width: 800px;
+        font-size: 14px;
+        line-height: 18px;
+
+        @media (min-width: 767px) {
+            font-size: 24px;
+            line-height: 30px;
+        }
     }
 
     small {
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 18px;
         padding: 6px 14px;
         color: white;
         text-transform: uppercase;
         background-color: #14A5DA;
+        font-size: 8px;
+        font-weight: 500;
+
+        @media (min-width: 767px) {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 18px;
+        }
     }
 }
 
@@ -149,11 +175,17 @@ export default {
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.56);
-    padding-bottom: 122px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
+    padding-bottom: 40px;
+    padding-top: 40px;
+
+    @media(min-width: 767px) {
+        padding-top: 0;
+        padding-bottom: 122px;
+    }
 }
 
 .slide-description {
@@ -162,30 +194,48 @@ export default {
 
 .slider-button {
     display: block;
-    width: 31px;
-    height: 22px;
     content: "";
     position: absolute;
     background-image: url(~images/left-arrow.svg);
-    bottom: 50px;
     background-color: transparent;
     padding: 0;
     border: none;
     cursor: pointer;
+    background-size: 100%;
+
+    bottom: 11px;
+
+    width: 18px;
+    height: 12px;
+
+    @media(min-width: 767px) {
+        bottom: 50px;
+
+        width: 31px;
+        height: 22px;
+    }
 }
 
 .prev-slide {
-    left: calc(50% - 570px);
     transform: rotateZ(180deg);
+
+    left: calc(15px);
+
+    @media(min-width: 767px) {
+        left: calc(50% - 570px);
+    }
 }
 
 .next-slide {
-    left: calc(50% + 570px - 31px);
+    left: calc(100vw - 15px - 18px);
+
+    @media(min-width: 767px) {
+        left: calc(50% + 570px - 31px);
+    }
 }
 
 .crumbs {
     position: absolute;
-    bottom: 60px;
     left: 0;
     right: 0;
     display: flex;
@@ -193,19 +243,30 @@ export default {
     flex-direction: row;
     justify-content: center;
     align-items: stretch;
+    bottom: 15px;
+
+    @media(min-width: 767px) {
+        bottom: 60px;
+    }
 
     button {
         display: block;
-        width: 80px;
         height: 3px;
         content: "";
         display: block;
         background-color: white;
         padding: 0;
         border: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        cursor: pointer;
+        width: 40px;
+
+        @media(min-width: 767px) {
+            width: 80px;
         margin-left: 10px;
         margin-right: 10px;
-        cursor: pointer;
+        }
 
         &.active {
             background-color: #14A5DA;
