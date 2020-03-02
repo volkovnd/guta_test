@@ -22,45 +22,84 @@ export default {
 #about {
     @include make-container();
 
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 20px;
+    padding-bottom: 30px;
 
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+    @media(min-width: 767px) {
+        padding-top: 70px;
+        padding-bottom: 70px;
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
 }
 
 .content {
-    width: 100%;
-    flex: 0 0 770px;
-    max-width: 770px;
+    @media(min-width: 767px) {
+        width: 100%;
+        flex: 0 0 770px;
+        max-width: 770px;
+    }
 }
 
-.title a {
-    font-size: 32px;
-    line-height: 39px;
-    font-weight: 700;
-    color: #000000;
-    text-transform: uppercase;
-    text-decoration: none;
+.title {
+    text-align: center;
+
+    @media(min-width: 767px) {
+        text-align: left;
+    }
+
+    a {
+        font-weight: 700;
+        color: #000000;
+        text-transform: uppercase;
+        text-decoration: none;
+
+        font-size: 16px;
+        line-height: 19px;
+
+        @media(min-width: 767px) {
+            font-size: 32px;
+            line-height: 39px;
+        }
+    }
 }
 
 p {
-    font-size: 16px;
-    line-height: 26px;
     color: #000000;
-    margin-bottom: 50px;
+
+    font-size: 10px;
+    line-height: 13px;
+    margin-bottom: 20px;
+
+    @media(min-width: 767px) {
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 50px;
+    }
 }
 
 .read-more {
-    font-size: 14px;
     font-weight: 600;
-    line-height: 18px;
     color: $links-color;
     text-decoration: none;
     text-transform: uppercase;
+    display: block;
+
+    font-size: 10px;
+    line-height: 13px;
+
+    text-align: center;
+
+    @media(min-width: 767px) {
+        font-size: 14px;
+        line-height: 18px;
+
+        text-align: left;
+    }
 
     &:after {
         content: "";
@@ -69,6 +108,11 @@ p {
         background-image: url("~images/read-more.svg");
         display: inline-block;
         margin-left: 16px;
+        margin-bottom: -2px;
+
+        @media(min-width: 767px) {
+            margin-bottom: 0;
+        }
     }
 }
 </style>
