@@ -73,7 +73,7 @@ export default {
     },
     created() {
         setInterval(() => {
-            // this.nextSlide();
+            this.nextSlide();
         }, 3000);
     }
 };
