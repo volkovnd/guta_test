@@ -32,8 +32,8 @@ export default {
 };
 </script>
 
-<style>
-    @import "~normalize.css/normalize.css";
+<style lang="scss">
+@import "~normalize.css/normalize.css";
 
     html {
         -webkit-font-smoothing: antialiased;
@@ -52,7 +52,7 @@ export default {
     #app {
         padding-top: 68px;
 
-        @media(min-width: 767px) {
+        @media (min-width: 767px) {
             padding-top: 140px;
         }
     }
