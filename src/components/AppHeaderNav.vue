@@ -1,5 +1,5 @@
 <template>
-    <div id="menu" @mouseover="showDropdown=true" @mouseleave="showDropdown=false">
+    <div id="menu" @mouseover="showDropdown=true && !isMobile()" @mouseleave="showDropdown=false">
         <nav>
             <div class="nav-item" v-for="item in navItems">
                 <a v-bind:href="item.link">{{ item.title }}</a>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { isMobile } from "./utils";
+
 export default {
     data() {
         return {
@@ -83,6 +85,9 @@ export default {
             ],
             showDropdown: false
         };
+    },
+    methods: {
+        isMobile
     }
 };
 </script>
