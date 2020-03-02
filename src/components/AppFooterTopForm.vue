@@ -88,4 +88,10 @@ export default {
         }
     }
 }
+
+.footer-title {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
 </style>
