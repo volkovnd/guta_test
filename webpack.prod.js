@@ -13,7 +13,7 @@ var prodConfig = () => ({
     output: {
         filename: "js/[name].[hash].js",
         chunkFilename: "js/[id].[hash].js",
-        publicPath: "https://volkovnd.github.io/guta_test/"
+        publicPath: "/"
     },
     plugins: [
         new CleanWebpackPlugin(),
