@@ -71,6 +71,10 @@ export default {
 
         margin-bottom: 38px;
 
+        @media(min-width: 767px) {
+            margin-bottom: 0;
+        }
+
         .close {
             display: block;
             border: none;
@@ -109,12 +113,15 @@ export default {
     .container {
         @include make-container();
 
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
         z-index: 10;
 
         @media(max-width: 767px) {
             position: fixed;
+
+            padding-top: 20px;
+            padding-bottom: 20px;
 
             top: 0;
             left: 0;
