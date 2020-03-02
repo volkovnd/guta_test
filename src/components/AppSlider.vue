@@ -15,6 +15,9 @@
             <button type="button" @click="nextSlide" class="slider-button next-slide"></button>
             <button type="button" @click="prevSlide" class="slider-button prev-slide"></button>
         </div>
+        <div class="crumbs">
+            <button v-for="(slide, index) in slides" type="button" @click="selectSlide(index)" v-bind:class="currentSlide===index?'active':''"></button>
+        </div>
     </div>
 </template>
 
@@ -58,6 +61,9 @@ export default {
             }
 
             this.currentSlide = this.currentSlide - 1;
+        },
+        selectSlide(slidePos) {
+            this.currentSlide = slidePos;
         }
     },
     computed: {
@@ -175,5 +181,35 @@ export default {
 
 .next-slide {
     left: calc(50% + 570px - 31px);
+}
+
+.crumbs {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+
+    button {
+        display: block;
+        width: 80px;
+        height: 3px;
+        content: "";
+        display: block;
+        background-color: white;
+        padding: 0;
+        border: 0;
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+
+        &.active {
+            background-color: #14A5DA;
+        }
+    }
 }
 </style>
