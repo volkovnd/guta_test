@@ -116,47 +116,78 @@ export default {
     position: relative;
 
     &:before {
-        width: calc(78px * 2);
-        height: calc(78px * 2);
         position: absolute;
-        top: -78px;
-        left: -78px;
         transform: rotateZ(45deg);
         transform-origin: center;
         display: block;
         content: "";
         background: #14A5DA1F 0% 0% no-repeat padding-box;
+
+        width: calc(48px * 2);
+        height: calc(48px * 2);
+
+        top: -48px;
+        left: -48px;
+
+        @media(min-width: 767px) {
+            width: calc(78px * 2);
+            height: calc(78px * 2);
+
+            top: -78px;
+            left: -78px;
+        }
     }
 
     &:after {
         position: absolute;
         content: "";
         display: block;
-        width: 50px;
-        height: 50px;
         background-image: url("~images/RSS.svg");
-        background-size: 21px 21px;
         background-position: center;
         background-repeat: no-repeat;
         left: 0;
         top: 0;
+
+        background-size: 12px 12px;
+
+        width: 30px;
+        height: 30px;
+
+        @media(min-width: 767px) {
+            background-size: 21px 21px;
+
+            width: 50px;
+            height: 50px;
+        }
     }
 }
 
 form {
     display: block;
     width: 100%;
-    max-width: 600px;
-    flex: 0 0 600px;
     text-align: center;
+
+    max-width: 100%;
+    flex: 0 0 100%;
+
+    @media(min-width: 767px) {
+        max-width: 600px;
+        flex: 0 0 600px;
+    }
 }
 
 h2 {
-    font-size: 20px;
-    line-height: 24px;
     color: #000000;
     text-transform: uppercase;
     margin-bottom: 25px;
+
+    font-size: 12px;
+    line-height: 15px;
+
+    @media(min-width: 767px) {
+        font-size: 20px;
+        line-height: 24px;
+    }
 }
 
 .form-row {
@@ -168,24 +199,44 @@ h2 {
 
     .form-item {
         width: 100%;
-        max-width: 50%;
-        flex: 0 0 50%;
         text-align: left;
+
+        max-width: 100%;
+        flex: 0 0 100%;
+
+        @media(min-width: 767px){
+            max-width: 50%;
+            flex: 0 0 50%;
+        }
     }
 }
 
 .form-item {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-bottom: 25px;
+    padding-left: 0;
+    padding-right: 0;
+
+    margin-bottom: 15px;
+
+    @media(min-width: 767px) {
+        padding-left: 15px;
+        padding-right: 15px;
+
+        margin-bottom: 25px;
+    }
 
     label, .form-error {
         display: block;
         padding-left: 21px;
-        font-size: 12px;
-        line-height: 15px;
         margin-bottom: 5px;
         text-align: left;
+
+        font-size: 8px;
+        line-height: 10px;
+
+        @media(min-width: 767px) {
+            font-size: 12px;
+            line-height: 15px;
+        }
     }
 
     .form-error {
@@ -196,9 +247,16 @@ h2 {
         width: 100%;
         border: 1px solid #14A5DA;
         border-radius: 4px;
-        line-height: 18px;
         padding: 10px 20px;
         color: #000000;
+
+        font-size: 10px;
+        line-height: 13px;
+
+        @media(min-width: 767px) {
+            font-size: 14px;
+            line-height: 18px;
+        }
 
         &.error {
             border-color: #E76400;
@@ -209,9 +267,15 @@ h2 {
         }
 
         &::placeholder {
-            font-size: 14px;
-            line-height: 18px;
             color: rgba(0,0,0,0.73);
+
+            font-size: 10px;
+            line-height: 12 px;
+
+            @media(min-width: 767px) {
+                font-size: 14px;
+                line-height: 18px;
+            }
         }
     }
 }
@@ -224,6 +288,12 @@ button[type="submit"] {
     color: #FFFFFF;
     padding: 10px 78px;
     background-color: #14A5DA;
+
+    width: 100%;
+
+    @media(min-width: 767px) {
+        width: auto;
+    }
 }
 
 .form-success-message {
