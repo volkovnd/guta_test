@@ -297,18 +297,33 @@ button[type="submit"] {
 }
 
 .form-success-message {
-    font-size: 20px;
     font-weight: 600;
-    line-height: 24px;
     text-transform: uppercase;
+    font-size: 12px;
+    line-height: 15px;
+    display: block;
+    text-align: center;
+
+    @media(min-width: 767px) {
+        font-size: 20px;
+        line-height: 24px;
+    }
 }
 
 .form-success-icon {
     margin-bottom: 25px;
-    height: 61px;
     width: 100%;
     background-image: url("~images/done.svg");
     background-repeat: no-repeat;
     background-position: center;
+
+    background-size: 40px;
+
+    height: 40px;
+
+    @media(min-width: 767px) {
+        background-size: 61px;
+        height: 61px;
+    }
 }
 </style>
