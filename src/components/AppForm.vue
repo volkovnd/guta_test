@@ -1,7 +1,7 @@
 <template>
     <section id="form">
         <div class="form">
-            <form action="/" @submit="checkForm">
+            <form v-if="!formChecked" action="/" @submit="checkForm">
                 <h2>Подпишитесь на рассылку</h2>
                 <div class="form-row">
                     <div v-if="!errorName"  class="form-item">
@@ -35,6 +35,10 @@
                 </div>
                 <button type="submit">Подписаться</button>
             </form>
+            <div v-else class="form-success">
+                <div class="form-success-icon"></div>
+                <span class="form-success-message">Уважаемый, {{ name }}, спасибо за подписку!</span>
+            </div>
         </div>
     </section>
 </template>
@@ -50,11 +54,14 @@ export default {
             comment: null,
             errorName: false,
             errorEmail: false,
-            errorComment: false
+            errorComment: false,
+            formChecked: false
         };
     },
     methods: {
         checkForm(e) {
+            e.preventDefault();
+
             if (!this.name) {
                 this.errorName = "Заполните поле";
             } else if (!this.validName(this.name)) {
@@ -77,7 +84,7 @@ export default {
                 this.errorComment = false;
             }
 
-            e.preventDefault();
+            this.formChecked = !this.errorName && !this.errorEmail && !this.errorComment;
         },
         validEmail,
         validName(name) {
@@ -217,5 +224,21 @@ button[type="submit"] {
     color: #FFFFFF;
     padding: 10px 78px;
     background-color: #14A5DA;
+}
+
+.form-success-message {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+.form-success-icon {
+    margin-bottom: 25px;
+    height: 61px;
+    width: 100%;
+    background-image: url("~images/done.svg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 </style>
