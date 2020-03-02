@@ -6,3 +6,7 @@ export function validEmail(email) {
 
     return re.test(email);
 }
+
+export function isMobile() {
+    return window.innerWidth < 767;
+}
