@@ -4,7 +4,8 @@
 
 https://volkovnd.github.io/guta_test/index.html
 
-# Команды 
+# Команды
 
 для старта dev сервера: npm run start
+
 для сборки: npm run build

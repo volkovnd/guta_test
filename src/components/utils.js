@@ -1,12 +1,13 @@
 export function validEmail(email) {
-    /**
-     * Честно спер регулярное выражение :-)
-     */
-    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  /**
+   * Честно спер регулярное выражение :-)
+   */
+  // eslint-disable-next-line no-useless-escape
+  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    return re.test(email);
+  return re.test(email);
 }
 
 export function isMobile() {
-    return window.innerWidth < 767;
+  return window.innerWidth < 767;
 }
