@@ -34,7 +34,8 @@ export default {
 
 <style lang="scss">
 @import "~normalize.css/normalize.css";
-` html {
+
+html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
