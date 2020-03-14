@@ -27,7 +27,7 @@ var prodConfig = () => ({
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, "public"),
-        to: "docs"
+        to: ""
       }
     ]),
     new MiniCssExtractPlugin({
