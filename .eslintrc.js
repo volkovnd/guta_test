@@ -7,8 +7,6 @@ module.exports = {
     es2020: true,
     browser: true
   },
-  parserOptions: {
-  },
   extends: [
     "eslint:recommended",
     "plugin:import/errors",
@@ -17,6 +15,7 @@ module.exports = {
     "plugin:prettier/recommended"
   ],
   plugins: [
+    "vue",
     "prettier"
   ],
   parser: "vue-eslint-parser",
@@ -30,6 +29,9 @@ module.exports = {
       "no-restricted-globals": ["error"].concat(restrictedGlobals)
     }
   }],
+  globals: {
+    DEBUG: "readonly"
+  },
   settings: {
     "import/resolver": {
       webpack: {

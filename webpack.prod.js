@@ -1,10 +1,14 @@
+var path = require("path");
+var webpack = require("webpack");
 var merge = require("webpack-merge");
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var OptimizeCSSAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
 var TerserWebpackPlugin = require("terser-webpack-plugin");
 var CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin;
-var ImageminPlugin = require("imagemin-webpack");
-
+var ImageminPlugin = require("imagemin-webpack-plugin").default;
+var CopyWebpackPlugin = require("copy-webpack-plugin");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var cssnano = require("cssnano");
 var commonConfig = require("./webpack.common");
 
 /** @returns {import("webpack").Configuration} */
@@ -13,34 +17,33 @@ var prodConfig = () => ({
   output: {
     filename: "js/[name].[hash].js",
     chunkFilename: "js/[id].[hash].js",
-    publicPath: "https://volkovnd.github.io/guta_test/"
+    publicPath: "/guta_test/"
   },
   plugins: [
+    new webpack.DefinePlugin({
+      DEBUG: false
+    }),
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, "public"),
+        to: "docs"
+      }
+    ]),
     new MiniCssExtractPlugin({
       filename: "css/[name].[hash].css",
       chunkFilename: "css/[id].[hash].css"
     }),
-    new ImageminPlugin({
-      bail: false,
-      cache: true,
-      imageminOptions: {
-        plugins: [
-          ["gifsicle", { interlaced: true }],
-          ["jpegtran", { progressive: true }],
-          ["optipng", { optimizationLevel: 5 }],
-          [
-            "svgo",
-            {
-              plugins: [
-                {
-                  removeViewBox: false
-                }
-              ]
-            }
-          ]
-        ]
-      }
+    new OptimizeCSSAssetsWebpackPlugin({
+      processor: cssnano,
+      canPrint: false
+    }),
+    new ImageminPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Home page",
+      minify: true,
+      template: path.resolve(__dirname, "src/pages/home.html"),
+      publicPath: "/docs/"
     })
   ],
   optimization: {
@@ -54,58 +57,28 @@ var prodConfig = () => ({
             comments: false
           }
         }
-      }),
-      new OptimizeCSSAssetsWebpackPlugin({
-        processor: require("cssnano"),
-        canPrint: false
       })
     ]
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(css|sass|scss)$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            ident: "extract"
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: "css-loader",
             options: {
-              modules: false,
-              importLoaders: 1
-            },
-            ident: "css"
-          },
-          {
-            loader: "postcss-loader",
-            ident: "postcss"
-          }
-        ]
-      },
-      {
-        test: /\.s[ca]ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            ident: "extract"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: false,
               importLoaders: 2
-            },
-            ident: "css"
+            }
           },
           {
-            loader: "postcss-loader",
-            ident: "postcss"
+            loader: "postcss-loader"
           },
           {
-            loader: "sass-loader",
-            ident: "sass"
+            loader: "sass-loader"
           }
         ]
       }

@@ -20,12 +20,12 @@
       </div>
       <AppHeaderNav />
       <div id="sub-menu">
-        <a href="/">Регистрация</a>
-        <a href="/">Вход</a>
+        <a :href="baseUrl + '/'">Регистрация</a>
+        <a :href="baseUrl">Вход</a>
       </div>
       <div v-if="isMobile()" id="bottom-menu">
-        <a href="/">Режим работы</a>
-        <a href="/">Правила посещения</a>
+        <a :href="baseUrl">Режим работы</a>
+        <a :href="baseUrl">Правила посещения</a>
       </div>
     </div>
   </header>
@@ -48,12 +48,17 @@ export default {
   },
   methods: {
     isMobile
+  },
+  computed: {
+    baseUrl() {
+      return typeof window.publicPath !== "undefined" ? window.publicPath : "/";
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "scss/global";
+@import "~scss/global";
 
 header {
   position: fixed;

@@ -1,8 +1,6 @@
 var path = require("path");
 
-var HtmlWebpackPlugin = require("html-webpack-plugin");
 var VueLoaderPlugin = require("vue-loader").VueLoaderPlugin;
-var CopyWebpackPlugin = require("copy-webpack-plugin");
 
 /** @returns {import('webpack').Configuration} */
 var commonConfig = () => ({
@@ -32,18 +30,20 @@ var commonConfig = () => ({
           {
             loader: "file-loader",
             options: {
-              filename: "fonts/[name].[ext]"
+              filename: "[name].[ext]",
+              outputPath: "fonts"
             }
           }
         ]
       },
       {
-        test: /\.(jpg|jpeg|png|svg|webp)$/,
+        test: /\.(jpg|jpeg|png|svg|webp|gif)$/,
         use: [
           {
             loader: "file-loader",
             options: {
-              filename: "images/[name].[ext]"
+              filename: "[name].[ext]",
+              outputPath: "images"
             }
           }
         ]
@@ -55,6 +55,10 @@ var commonConfig = () => ({
             loader: "vue-loader"
           }
         ]
+      },
+      {
+        test: /\.json$/,
+        type: "json"
       }
     ]
   },
@@ -65,26 +69,15 @@ var commonConfig = () => ({
       chunks: "all"
     }
   },
-  plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: "src/images",
-        to: "images"
-      }
-    ]),
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      title: "Home page",
-      minify: false,
-      template: path.resolve(__dirname, "src/pages/home.html")
-    })
-  ],
+  plugins: [new VueLoaderPlugin()],
   resolve: {
     alias: {
       images: path.resolve(__dirname, "src/images"),
-      scss: path.resolve(__dirname, "src/scss")
+      scss: path.resolve(__dirname, "src/scss"),
+      components: path.resolve(__dirname, "src/components"),
+      vue$: "vue/dist/vue.esm.js"
     },
-    extensions: [".js", ".vue"]
+    extensions: [".js", ".json", ".vue"]
   }
 });
 

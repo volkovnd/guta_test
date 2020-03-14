@@ -1,5 +1,5 @@
 <template>
-  <div id="slider">
+  <div v-if="slides.length > 0" id="slider">
     <div
       class="slides"
       :style="{ transform: 'translateX(-' + currentSlide * 100 + 'vw)' }"
@@ -8,7 +8,7 @@
         class="slide"
         v-for="(slide, index) in slides"
         :key="index"
-        :link="slide.link"
+        :link="baseUrl + slide.link"
         :style="{ backgroundImage: 'url(' + slide.image + ')' }"
       >
         <div class="slide-description-wrapper">
@@ -34,9 +34,9 @@
     </div>
     <div class="crumbs">
       <button
+        type="button"
         v-for="(slide, index) in slides"
         :key="index"
-        type="button"
         @click="selectSlide(index)"
         :class="currentSlide === index ? 'active' : ''"
       ></button>
@@ -48,46 +48,38 @@
 export default {
   data() {
     return {
-      slides: [
-        {
-          link: "/",
-          tag: "Анимация",
-          image: "images/slide_1.jpg",
-          title: "Подготовка спрайтов для анимации в Unity",
-          description:
-            "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
-        },
-        {
-          link: "/",
-          tag: "Анимация",
-          image: "images/slide_2.jpg",
-          title: "Подготовка спрайтов для анимации",
-          description:
-            "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
-        },
-        {
-          link: "/",
-          tag: "Анимация",
-          image: "images/slide_3.jpg",
-          title: "Подготовка спрайтов",
-          description:
-            "Спрайты должны немного отличаться друг от друга, чтобы было заметно движение."
-        }
-      ],
+      slides: [],
       currentSlide: 0
     };
   },
   computed: {
+    baseUrl() {
+      return typeof window.publicPath !== "undefined" ? window.publicPath : "/";
+    },
     slidesCount() {
       return this.slides.length;
     }
   },
   created() {
-    setInterval(() => {
-      this.nextSlide();
-    }, 3000);
+    this.getAllSlides();
   },
   methods: {
+    initSliderTimer() {
+      setInterval(() => {
+        this.nextSlide();
+      }, 3000);
+    },
+    getAllSlides() {
+      import("../api/slides.json").then(data => {
+        let slides = data.default;
+
+        if (slides && slides.length > 0) {
+          this.slides = slides;
+
+          this.initSliderTimer();
+        }
+      });
+    },
     nextSlide() {
       this.currentSlide = (this.currentSlide + 1) % this.slidesCount;
     },
@@ -106,7 +98,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "scss/global";
+@import "~scss/global";;
 
 #slider {
   overflow: hidden;

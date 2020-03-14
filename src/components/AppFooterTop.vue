@@ -16,7 +16,7 @@
             <a
               v-for="(item, index) in navItems"
               :key="index"
-              :href="item.link"
+              :href="baseUrl + item.link"
               >{{ item.title }}</a
             >
           </div>
@@ -29,6 +29,7 @@
                   :key="index"
                   :href="item.link"
                   :class="item.class"
+                  target="_blank"
                 ></a>
               </div>
             </div>
@@ -54,54 +55,59 @@ export default {
       navItems: [
         {
           title: "О компании",
-          link: "/"
+          link: ""
         },
         {
           title: "Партнёрская программа",
-          link: "/"
+          link: ""
         },
         {
           title: "Реклама",
-          link: "/"
+          link: ""
         },
         {
           title: "Пресс-центр",
-          link: "/"
+          link: ""
         },
         {
           title: "Вакансии",
-          link: "/"
+          link: ""
         },
         {
           title: "Помощь",
-          link: "/"
+          link: ""
         },
         {
           title: "Правила",
-          link: "/"
+          link: ""
         }
       ],
       socLinks: [
         {
-          link: "/",
+          link: "",
           class: "facebook"
         },
         {
-          link: "/",
+          link: "",
           class: "odnoklassniki"
         },
         {
-          link: "/",
+          link: "",
           class: "instagram"
         }
       ]
     };
+  },
+  computed: {
+    baseUrl() {
+      return typeof window.publicPath !== "undefined" ? window.publicPath : "/";
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "scss/global";
+@import "~scss/global";;
 
 .footer-top {
   padding: 30px 0;

@@ -5,7 +5,11 @@
         © ООО «Глобус», 2016 — 2019
       </div>
       <div class="nav">
-        <a v-for="(item, index) in navItems" :key="index" :href="item.link">
+        <a
+          v-for="(item, index) in navItems"
+          :key="index"
+          :href="baseUrl + item.link"
+        >
           {{ item.title }}
         </a>
       </div>
@@ -20,14 +24,19 @@ export default {
       navItems: [
         {
           title: "Политика конфиденциальности",
-          link: "/"
+          link: ""
         },
         {
           title: "Cookies",
-          link: "/"
+          link: ""
         }
       ]
     };
+  },
+  computed: {
+    baseUrl() {
+      return typeof window.publicPath !== "undefined" ? window.publicPath : "/";
+    }
   }
 };
 </script>

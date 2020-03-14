@@ -1,15 +1,21 @@
 <template>
   <div class="logo">
-    <a href="/">LOGOTYPE</a>
+    <a :href="baseUrl">LOGOTYPE</a>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    baseUrl() {
+      return typeof window.publicPath !== "undefined" ? window.publicPath : "/";
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import "scss/global";
+@import "~scss/global";;
 
 .logo {
   a {

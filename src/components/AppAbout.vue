@@ -1,7 +1,7 @@
 <template>
   <section id="about">
     <div class="title">
-      <a href="/">О компании</a>
+      <a :href="baseUrl">О компании</a>
     </div>
     <div class="content">
       <p>
@@ -10,17 +10,23 @@
         несколько спрайтов (двумерное изображение), которые сменяют друг друга с
         определенным интервалом.
       </p>
-      <a class="read-more" href="/">Подробнее</a>
+      <a class="read-more" :href="baseUrl">Подробнее</a>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  computed:{
+    baseUrl() {
+      return typeof window.baseUrl !== "undefined" ? window.baseUrl : "/";
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import "scss/global";
+@import "~scss/global";
 
 #about {
   @include make-container();

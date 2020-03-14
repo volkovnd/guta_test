@@ -6,7 +6,7 @@
   >
     <nav>
       <div class="nav-item" v-for="(item, index) in navItems" :key="index">
-        <a :href="item.link">{{ item.title }}</a>
+        <a :href="baseUrl + item.link">{{ item.title }}</a>
       </div>
     </nav>
     <div id="dropdown" v-show="showDropdown === true">
@@ -19,7 +19,7 @@
           <a
             v-for="(dropdownItem, dropdownIndex) in item.childrens"
             :key="dropdownIndex"
-            :href="dropdownItem.link"
+            :href="baseUrl + dropdownItem.link"
             >{{ dropdownItem.title }}</a
           >
         </div>
@@ -37,63 +37,63 @@ export default {
       navItems: [
         {
           title: "Меню",
-          link: "/",
+          link: "",
           childrens: [
             {
               title: "Меню",
-              link: "/"
+              link: ""
             },
             {
               title: "Меню",
-              link: "/"
+              link: ""
             },
             {
               title: "Меню",
-              link: "/"
+              link: ""
             },
             {
               title: "Меню",
-              link: "/"
+              link: ""
             }
           ]
         },
         {
           title: "Меню",
-          link: "/"
+          link: ""
         },
         {
           title: "Меню",
-          link: "/"
+          link: ""
         },
         {
           title: "Меню",
-          link: "/"
+          link: ""
         },
         {
           title: "Меню",
-          link: "/",
+          link: "",
           childrens: [
             {
               title: "Меню",
-              link: "/"
+              link: ""
             },
             {
               title: "Меню",
-              link: "/"
+              link: ""
             },
             {
               title: "Меню",
-              link: "/"
+              link: ""
             },
             {
               title: "Меню",
-              link: "/"
+              link: ""
             }
           ]
         },
         {
           title: "Меню",
-          link: "/"
+          link: ""
         }
       ],
       showDropdown: false
@@ -101,12 +101,17 @@ export default {
   },
   methods: {
     isMobile
+  },
+  computed: {
+    baseUrl() {
+      return typeof window.publicPath !== "undefined" ? window.publicPath : "/";
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "scss/global";
+@import "~scss/global";;
 
 .container {
   @include make-container();

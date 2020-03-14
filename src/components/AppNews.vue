@@ -1,15 +1,15 @@
 <template>
   <section id="news">
     <div class="title">
-      <a class="h1" href="/">Новости</a>
-      <a class="read-all" href="/">Все новости</a>
+      <a class="h1" :href="baseUrl">Новости</a>
+      <a class="read-all" :href="baseUrl">Все новости</a>
     </div>
     <div class="list">
       <a
         class="news-item"
         v-for="(article, index) in showingNews"
         :key="index"
-        :href="article.link"
+        :href="baseUrl + article.link"
       >
         <img :src="article.image" alt="" />
         <div class="news-item-upped">
@@ -29,48 +29,14 @@
 export default {
   data() {
     return {
-      news: [
-        {
-          image: "images/img_1.jpg",
-          link: "/"
-        },
-        {
-          image: "images/img_2.jpg",
-          link: "/"
-        },
-        {
-          image: "images/img_3.jpg",
-          link: "/"
-        },
-        {
-          image: "images/img_3.jpg",
-          link: "/"
-        },
-        {
-          image: "images/img_2.jpg",
-          link: "/"
-        },
-        {
-          image: "images/img_1.jpg",
-          link: "/"
-        },
-        {
-          image: "images/img_2.jpg",
-          link: "/"
-        },
-        {
-          image: "images/img_3.jpg",
-          link: "/"
-        },
-        {
-          image: "images/img_1.jpg",
-          link: "/"
-        }
-      ],
+      news: [],
       page: 1
     };
   },
   computed: {
+    baseUrl() {
+      return typeof window.publicPath !== "undefined" ? window.publicPath : "/";
+    },
     newsCount() {
       return this.news.length;
     },
@@ -91,6 +57,15 @@ export default {
     loadMore() {
       this.page = this.page + 1;
     }
+  },
+  created() {
+    import("../api/news.json").then(data => {
+      let news = data.default;
+
+      if (news && news.length > 0) {
+        this.news = news;
+      }
+    });
   }
 };
 </script>

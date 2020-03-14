@@ -1,4 +1,7 @@
+var path = require("path");
+var webpack = require("webpack");
 var merge = require("webpack-merge");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var commonConfig = require("./webpack.common");
 
@@ -10,74 +13,54 @@ var devConfig = () => ({
     chunkFilename: "js/[id].js"
   },
   plugins: [
+    new webpack.DefinePlugin({
+      DEBUG: false
+    }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
       chunkFilename: "css/[id].css"
+    }),
+    new HtmlWebpackPlugin({
+      title: "Home page",
+      minify: false,
+      template: path.resolve(__dirname, "src/pages/home.html"),
+      publicPath: "/"
     })
   ],
   devServer: {
     host: "localhost",
     port: 3000,
     compress: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, "public")
   },
   devtool: "inline-source-map",
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(css|scss|sass)$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            ident: "extract"
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: "css-loader",
             options: {
-              importLoaders: 1,
-              modules: false,
-              sourceMap: true
-            },
-            ident: "css"
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              sourceMap: true
-            },
-            ident: "postcss"
-          }
-        ]
-      },
-      {
-        test: /\.s[ca]ss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            ident: "extract"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true,
               importLoaders: 2,
-              modules: false
-            },
-            ident: "css"
+              sourceMap: true
+            }
           },
           {
             loader: "postcss-loader",
             options: {
               sourceMap: true
-            },
-            ident: "postcss"
+            }
           },
           {
             loader: "sass-loader",
             options: {
               sourceMap: true
-            },
-            ident: "sass"
+            }
           }
         ]
       }
