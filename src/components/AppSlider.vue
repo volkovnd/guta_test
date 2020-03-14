@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~scss/global";;
+@import "~scss/global";
 
 #slider {
   overflow: hidden;

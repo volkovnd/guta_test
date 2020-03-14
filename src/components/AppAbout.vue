@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  computed:{
+  computed: {
     baseUrl() {
       return typeof window.baseUrl !== "undefined" ? window.baseUrl : "/";
     }
